@@ -1,0 +1,30 @@
+.panel{
+    justify-content: flex-end;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-shrink: 0;
+    height: 30dvh;
+    width: 18vw;
+    min-width: 360px;
+    box-shadow: -0.2vw 0.8vh 1vh 0.5vh var(--shadow-color),
+    0rem -10rem 5rem 0rem inset var(--shadow-color); 
+    background-color: white;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+.panel:hover{
+    scale:1.05;
+}
+.panel > h3 {
+    font-weight: bolder;
+    color: var(--background-color);
+    font-size: 2rem;
+    align-self: center;
+    margin-bottom: 3rem;
+    text-shadow: -2.5px 2.5px var(--shadow-color);
+    text-decoration: solid;
+}

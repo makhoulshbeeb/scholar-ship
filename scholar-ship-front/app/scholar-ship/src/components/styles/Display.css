@@ -1,0 +1,29 @@
+.display {
+    height: fit-content;
+    width: 64dvw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    font-weight: bolder;
+    margin-top: 1rem;
+}
+
+.display > h2 {
+    font-size: 2.5rem;
+    padding: 1rem 2vw 0 2vw;
+    align-self: flex-start;
+
+}
+
+.scroll-display{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    gap: 2rem; 
+    padding: 1rem 2vw 2rem 2vw;
+    border-radius: 2rem;
+}
+.scroll-display::-webkit-scrollbar{
+    display: none;
+}
