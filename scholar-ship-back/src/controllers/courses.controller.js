@@ -6,14 +6,24 @@ export const getCourses = async (req, res) => {
   res.send(courses);
 };
 
+export const getCoursesBySearch = async (req, res) => {
+  const { search } = req.params;
+  const rgx = (pattern) => new RegExp(`.*${pattern}.*`, 'i');
+  const searchRgx = rgx(search);
+
+  const results = await Course.find({ name: searchRgx});
+
+  res.send(results);
+}
+
 export const createCourse = async (req, res) => {
   try {
     const { name, time, thumbnail, lessons } = req.body;
 
     const course = await Course.create({
-      name, 
-      time, 
-      thumbnail, 
+      name,
+      time,
+      thumbnail,
       lessons
     });
 
@@ -28,7 +38,7 @@ export const createCourse = async (req, res) => {
 };
 export const editCourse = async (req, res) => {
   const id = req.params.id;
-  const { name, thumbnail, order, lessons} = req.body;
+  const { name, thumbnail, order, lessons } = req.body;
 
   const course = await Course.findById(id);
 

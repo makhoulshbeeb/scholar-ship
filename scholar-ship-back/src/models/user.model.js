@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
+import { Course } from "./course.model.js";
 
 const userSchema = new Schema({
-    _id : Schema.ObjectId,
     name: {
         required: true,
         type: String,
@@ -18,9 +18,15 @@ const userSchema = new Schema({
     age: {
         type: Number,
     },
-    history: {
-        type: Array,
+    history: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Course'
+    }],
+    isAdmin: {
+        type: Boolean,
+        default: false
     }
+
 });
 
 export const User = mongoose.model("User", userSchema);

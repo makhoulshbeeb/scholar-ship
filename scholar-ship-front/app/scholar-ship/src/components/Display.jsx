@@ -1,23 +1,21 @@
-import { Recipes } from "../api/Recipes";
 import { useEffect, useState } from "react";
 import DisplayPanel from './DisplayPanel';
 import './styles/Display.css';
+import { useGetAllCoursesQuery } from "../api/CoursesApi";
 
 
-export default function Display({ displayTitle, panel_number = 8, setRecipeId }) {
-    const [recipes, setRecipes] = useState();
-    useEffect(() => {
-        Recipes.search('').then(result => { setRecipes(result.data.slice(0, panel_number)) });
 
-    }, []);
-    if (recipes) {
+export default function Display({ displayTitle}) {
+    const {data:courses} = useGetAllCoursesQuery();
+    
+    if (courses) {
         return (
             <div className="display">
                 <h2>{displayTitle}</h2>
                 <div className="scroll-display">
-                    {recipes.map(recipe => {
+                    {courses.map(course => {
                         return (
-                            <DisplayPanel recipe={recipe} setRecipeId={setRecipeId} key={recipe.id}></DisplayPanel>
+                            <DisplayPanel course={course} key={course.id}></DisplayPanel>
                         )
                     }
 

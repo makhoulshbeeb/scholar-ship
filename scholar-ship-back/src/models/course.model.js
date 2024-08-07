@@ -1,4 +1,6 @@
 import mongoose, { Schema } from "mongoose";
+import { Lesson } from "./lesson.model.js";
+
 
 const courseSchema = new Schema({
     name: {
@@ -13,30 +15,10 @@ const courseSchema = new Schema({
         type: String,
         required: true,
     },
-    lessons: {
-        type: Array,
-        required: true,
-    }
+    lessons: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Lesson' }]
 
 });
 
-const lessonSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
-    },
-    order: {
-        type: Number,
-        required: true,
-    },
-    time: {
-        type: String,
-        required: true,
-    },
-    thumbnail: {
-        type: String,
-        required: true,
-    }
-});
-
-export const User = mongoose.model("Course", courseSchema);
+export const Course = mongoose.model("Course", courseSchema);

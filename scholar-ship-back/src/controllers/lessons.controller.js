@@ -6,6 +6,13 @@ export const getLessons = async (req, res) => {
   res.send(lessons);
 };
 
+export const getLessonById = async (req, res) =>{
+  const id = req.params.id;
+  const lesson = await Lesson.findById(id);
+
+  res.send({lesson});
+}
+
 export const createLesson = async (req, res) => {
   try {
     const { name, time, thumbnail, order } = req.body;

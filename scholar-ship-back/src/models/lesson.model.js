@@ -19,4 +19,4 @@ const lessonSchema = new Schema({
     }
 });
 
-export const User = mongoose.model("Lesson", lessonSchema);
+export const Lesson = mongoose.model("Lesson", lessonSchema);

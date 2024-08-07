@@ -1,16 +1,23 @@
 import { Router } from "express";
 import {
   getCourses,
+  getCoursesBySearch,
   createCourse,
   editCourse,
   deleteCourse,
 } from "../controllers/courses.controller.js";
+import { userAuth } from "../middleware/userAuth.js";
 
 const router = new Router();
 
-router.get("/courses", getCourses);
-router.post("/courses", createCourse);
-router.put("/courses/:id", editCourse);
-router.delete("/courses/:id", deleteCourse);
+router.use((req, res, next) => {
+  if (userAuth(req, res)) next();
+})
+
+router.get("/", getCourses);
+router.get("/:search", getCoursesBySearch)
+router.post("/", createCourse);
+router.patch("/:id", editCourse);
+router.delete("/:id", deleteCourse);
 
 export default router;

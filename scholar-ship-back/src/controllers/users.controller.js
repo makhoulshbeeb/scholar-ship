@@ -6,6 +6,12 @@ export const getUsers = async (req, res) => {
   res.send(users);
 };
 
+export const getUserByUsername = async (req, res) => {
+  const user = await User.findOne({ username });
+
+  res.send({user});
+}
+
 export const createUser = async (req, res) => {
   try {
     const { name, username, password, age } = req.body;
