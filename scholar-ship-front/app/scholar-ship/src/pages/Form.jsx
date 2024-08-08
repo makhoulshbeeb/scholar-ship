@@ -18,7 +18,7 @@ export default function Form() {
     <div className="outer-form">
       <div className="container-form">
         <div className="logo">
-          Dev<span>Desk</span>
+          Scholar<span>Ship</span>
         </div>
         <SwitchButton
           isSignup={isSignup}

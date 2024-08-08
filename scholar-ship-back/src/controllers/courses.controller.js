@@ -3,7 +3,14 @@ import { Course } from "../models/course.model.js";
 export const getCourses = async (req, res) => {
   const courses = await Course.find();
 
-  res.send(courses);
+  res.json(courses);
+};
+
+export const getCourseById = async (req, res) => {
+  const {id} = req.params;
+  const course = await Course.findById(id);
+
+  res.json([course]);
 };
 
 export const getCoursesBySearch = async (req, res) => {

@@ -3,6 +3,10 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const lessonsApi = createApi({
     reducerPath: 'lessonsApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
+    headers: {
+      'authorization' : `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type' : 'application/json'
+    },
     tagTypes:['Lesson'],
     endpoints: (builder) => ({
       getAllLessons: builder.query({

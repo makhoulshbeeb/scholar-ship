@@ -16,6 +16,10 @@ const lessonSchema = new Schema({
     thumbnail: {
         type: String,
         required: true,
+    },
+    video:{
+        type:String,
+        required: true,
     }
 });
 

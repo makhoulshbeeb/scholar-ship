@@ -11,17 +11,22 @@ const userSchema = new Schema({
         type: String,
         unique: true,
     },
-    password: {
+    email: {
         required: true,
         type: String,
+        unique:true
     },
-    age: {
-        type: Number,
+    password: {
+        required: true,
+        select: false,
+        type: String,
     },
-    history: [{
+    history:{ type:[{
         type: Schema.Types.ObjectId,
         ref: 'Course'
     }],
+    default:[]
+    },
     isAdmin: {
         type: Boolean,
         default: false

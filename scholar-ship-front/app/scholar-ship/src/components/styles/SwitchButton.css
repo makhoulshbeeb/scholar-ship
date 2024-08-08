@@ -1,7 +1,7 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 14rem;
+  width: 12rem;
   height: 3rem;
 }
 
@@ -19,8 +19,8 @@
   right: 0;
   bottom: 0;
   transition: 0.3s;
-  border-radius: 0.25rem;
-  background-color: var(--background-light);
+  border-radius: 2rem;
+  background-color: var(--shadow-color);
 }
 
 .slider::after {
@@ -31,14 +31,14 @@
   width: 7rem;
   background-color: var(--primary-color);
   transition: 0.3s;
-  border-radius: 0.25rem;
+  border-radius: 2rem;
   font-weight: bold;
-  color: var(--text-color);
+  color: var(--background-color);
 }
 
 .slider::after {
   content: "Login";
-  transform: translateX(7rem);
+  transform: translateX(5rem);
 }
 
 input:checked + .slider::after {

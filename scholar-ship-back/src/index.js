@@ -7,11 +7,13 @@ import lessonsRoutes from "./routes/lessons.routes.js";
 import connectToDatabase from "./database/connection.js";
 import { populateDatabase } from "./database/populate.js";
 import BodyParser from "body-parser"
+import cors from "cors"
 
 const app = express();
 dotenv.config();
 
 app.use(BodyParser.json());
+app.use(cors());
 
 app.use("/auth", authRoutes)
 app.use("/users", usersRoutes);

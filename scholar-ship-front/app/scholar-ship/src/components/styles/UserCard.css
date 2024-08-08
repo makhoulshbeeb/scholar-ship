@@ -1,7 +1,7 @@
 .user-card{
     position: sticky;
     top:2rem;
-    width:25dvw;
+    width:32dvw;
     margin: 2rem 0 0 5dvw;
     height: 24rem;
     border-radius: 2rem;
@@ -22,6 +22,7 @@
     padding: 2rem;
     display: flex;
     align-items: flex-end;
+    vertical-align: baseline;
     justify-content: space-between;
     gap:1rem;
     color: var(--text-color);
@@ -37,6 +38,6 @@
     height: 10rem;
     width: 10rem;
     border-radius: 5rem;
-    background-color: var(--background-color);
+    background-color: var(--shadow-color);
     margin: 0 0 2rem 2rem;
 }

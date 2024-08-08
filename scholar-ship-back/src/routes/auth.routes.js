@@ -3,7 +3,7 @@ import {Router} from 'express'
 import {
     logInUser,
     signUpUser
-} from '../controllers/auth.controller'
+} from '../controllers/auth.controller.js'
 
 
 const router = new Router();

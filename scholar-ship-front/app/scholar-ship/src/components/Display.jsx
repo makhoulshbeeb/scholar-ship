@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import DisplayPanel from './DisplayPanel';
 import './styles/Display.css';
 import { useGetAllCoursesQuery } from "../api/CoursesApi";

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "./Button";
 import LabelInput from "./LabelInput";
 import "./styles/Form.css";
-import { useRegisterMutation } from "../api/AuthApi";
+import { useSignupMutation } from "../api/AuthApi";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
@@ -12,10 +12,10 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   // const [confirmedPassword, setConfirmedPassword] = useState("");
   const navigate = useNavigate();
-  const [register, { isLoading, error }] = useRegisterMutation();
+  const [signup, { isLoading, error }] = useSignupMutation();
 
   const handleSignUp = async () => {
-    if (name === "" || email === "" || password === "") {
+    if (name === "" || email === "" || password === "" || username ==="") {
       alert("Fields cannot be empty");
       return;
     }
@@ -30,16 +30,21 @@ const Signup = () => {
       alert("Invalid email format");
       return;
     }
-    const result = {
+    const form = {
       name,
       username,
       email,
       password,
     };
     try {
-      const res = await register(result).unwrap();
-      console.log("register successful:", res);
-      navigate("/form/login");
+      const result = await signup(form).unwrap();
+      if (result.success){
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("username", result.username);
+        navigate("/");
+      }else{
+        alert(result.error);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -87,8 +92,8 @@ const Signup = () => {
       <Button
         bgColor="--primary-color"
         text="Signup"
-        borderRadius="0.5rem"
-        textColor="--white-color"
+        borderRadius="2rem"
+        textColor="--background-color"
         onClick={handleSignUp}
       />
     </div>

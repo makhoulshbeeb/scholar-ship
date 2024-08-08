@@ -1,0 +1,14 @@
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  font-weight: bold;
+  gap: 0.5rem;
+}
+
+.label-input {
+  width:calc(100%-2rem);
+  font-weight: lighter;
+}

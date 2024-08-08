@@ -19,7 +19,6 @@ export default function Header() {
         </div>
 
         <Link to="/">Home</Link>
-        <Link to="/editor">Editor</Link>
         <Link to="/search">Search</Link>
       </nav>
       <div className="flex auth">

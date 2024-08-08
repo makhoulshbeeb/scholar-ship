@@ -14,9 +14,9 @@ export const getUserByUsername = async (req, res) => {
 
 export const createUser = async (req, res) => {
   try {
-    const { name, username, password, age } = req.body;
+    const { name, username, email, password} = req.body;
 
-    const exist = await User.findOne({ username });
+    const exist = await User.findOne({ email });
 
     if (exist) {
       return res.status(400).send({
@@ -28,7 +28,7 @@ export const createUser = async (req, res) => {
       name,
       username,
       password,
-      age,
+      email,
     });
 
     res.send({

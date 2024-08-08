@@ -24,10 +24,13 @@ const Login = () => {
 
     try {
       const result = await login({ email, password }).unwrap();
-      console.log("Login successful:", result.error);
-      localStorage.setItem("token", result.authorisation.token);
-      localStorage.setItem("username", result.user.username);
+      if (result.success){
+      localStorage.setItem("token", result.token);
+      localStorage.setItem("username", result.username);
       navigate("/");
+    }else{
+      alert(result.error);
+    }
     } catch (e) {
       console.error("Login failed:", e.message);
       alert("Login failed. Please check your credentials.");
@@ -54,8 +57,8 @@ const Login = () => {
         onClick={handleLogIn}
         bgColor="--primary-color"
         text="Login"
-        borderRadius="0.5rem"
-        textColor="--white-color"
+        borderRadius="2rem"
+        textColor="--background-color"
       />
     </div>
   );

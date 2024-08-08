@@ -15,10 +15,12 @@ const courseSchema = new Schema({
         type: String,
         required: true,
     },
-    lessons: [{
+    lessons: {
+        type: [{
         type: Schema.Types.ObjectId,
-        ref: 'Lesson' }]
-
+        ref: 'Lesson' 
+        }], 
+        default:[]}
 });
 
 export const Course = mongoose.model("Course", courseSchema);

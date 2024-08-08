@@ -3,6 +3,10 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const coursesApi = createApi({
     reducerPath: 'coursesApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
+    headers: {
+      'authorization' : `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type' : 'application/json'
+    },
     tagTypes:['Course'],
     endpoints: (builder) => ({
       getAllCourses: builder.query({
@@ -14,6 +18,13 @@ export const coursesApi = createApi({
       }),
       getCourseBySearch: builder.query({
         query:({search})=>`courses/${search}`,
+        providesTags: (result, error, arg) =>
+          result
+            ? [...result.map(({ id }) => ({ type: 'Course', id })), 'Course']
+            : ['Course'],
+      }),
+      getCourseById: builder.query({
+        query:({id})=>`courses/id/${id}`,
         providesTags: (result, error, arg) =>
           result
             ? [...result.map(({ id }) => ({ type: 'Course', id })), 'Course']
@@ -49,6 +60,7 @@ export const coursesApi = createApi({
 export const {
     useGetAllCoursesQuery,
     useGetCourseBySearchQuery,
+    useGetCourseByIdQuery,
     useCreateCourseMutation,
     useUpdateCourseMutation,
     useDeleteCourseMutation

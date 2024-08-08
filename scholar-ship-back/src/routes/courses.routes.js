@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   getCourses,
+  getCourseById,
   getCoursesBySearch,
   createCourse,
   editCourse,
@@ -10,11 +11,12 @@ import { userAuth } from "../middleware/userAuth.js";
 
 const router = new Router();
 
-router.use((req, res, next) => {
-  if (userAuth(req, res)) next();
-})
+// router.use((req, res, next) => {
+//   if (userAuth(req, res)) next();
+// });
 
 router.get("/", getCourses);
+router.get("/id/:id", getCourseById);
 router.get("/:search", getCoursesBySearch)
 router.post("/", createCourse);
 router.patch("/:id", editCourse);

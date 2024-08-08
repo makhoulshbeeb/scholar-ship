@@ -1,9 +1,7 @@
 .container-form {
-  position: absolute;
-  margin: 1rem;
-  border-radius: 1rem;
-  width: 30vw;
-  height: calc(60dvh + 9rem);
+  border-radius: 2rem;
+  width: 25dvw;
+  height: fit-content;
   background-color: var(--background-color);
   border: 0.1rem solid var(--text-light);
   overflow: hidden;
@@ -13,15 +11,16 @@
   /* justify-content: center; */
   gap: 1rem;
   color: var(--text-color);
-  padding: 3rem 0;
+  padding: 2rem 4rem;
 }
 
 .outer-form {
   width: 100%;
   height: 100%;
+  padding:4rem 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: fixed;
 }
 
@@ -34,6 +33,7 @@
 }
 
 .inner {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

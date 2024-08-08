@@ -5,12 +5,11 @@
     display: flex;
     flex-direction: column;
     font-weight: bolder;
-    margin-top: 1rem;
 }
 
 .display > h2 {
     font-size: 2.5rem;
-    padding: 1rem 2vw 0 2vw;
+    padding: 0 2rem;
     align-self: flex-start;
 
 }
@@ -21,7 +20,7 @@
     justify-content: flex-start;
     overflow-x: scroll;
     gap: 2rem; 
-    padding: 1rem 2vw 2rem 2vw;
+    padding: 1rem 2rem 2rem 2rem;
     border-radius: 2rem;
 }
 .scroll-display::-webkit-scrollbar{

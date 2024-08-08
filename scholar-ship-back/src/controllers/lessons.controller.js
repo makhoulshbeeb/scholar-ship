@@ -7,21 +7,24 @@ export const getLessons = async (req, res) => {
 };
 
 export const getLessonById = async (req, res) =>{
-  const id = req.params.id;
+  try{const {id} = req.params;
   const lesson = await Lesson.findById(id);
 
-  res.send({lesson});
+  res.send([lesson]);}
+  catch(err){
+  }
 }
 
 export const createLesson = async (req, res) => {
   try {
-    const { name, time, thumbnail, order } = req.body;
+    const { name, time, thumbnail, order, video } = req.body;
 
     const lesson = await Lesson.create({
       name, 
       time, 
       thumbnail, 
-      order
+      order,
+      video
     });
 
     res.send({
@@ -35,13 +38,14 @@ export const createLesson = async (req, res) => {
 };
 export const editLesson = async (req, res) => {
   const id = req.params.id;
-  const { name, thumbnail, order  } = req.body;
+  const { name, thumbnail, order, video  } = req.body;
 
   const lesson = await Lesson.findById(id);
 
   lesson.name = name ?? lesson.name;
   lesson.thumbnail = thumbnail ?? lesson.thumbnail;
   lesson.order = order ?? lesson.order;
+  lesson.video = order ?? lesson.video;
 
   console.log(lesson);
 
