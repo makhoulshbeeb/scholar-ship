@@ -8,6 +8,7 @@ import connectToDatabase from "./database/connection.js";
 import { populateDatabase } from "./database/populate.js";
 import BodyParser from "body-parser"
 import cors from "cors"
+import { userAuth } from "./middleware/userAuth.js";
 
 const app = express();
 dotenv.config();
@@ -16,12 +17,12 @@ app.use(BodyParser.json());
 app.use(cors());
 
 app.use("/auth", authRoutes)
-app.use("/users", usersRoutes);
-app.use("/courses", coursesRoutes);
+app.use("/users", userAuth, usersRoutes);
+app.use("/courses",  coursesRoutes);
 app.use("/lessons", lessonsRoutes);
 
 app.listen(process.env.PORT, () => {
   connectToDatabase();
 });
 
-populateDatabase();
+// populateDatabase();

@@ -24,6 +24,7 @@ const Login = () => {
 
     try {
       const result = await login({ email, password }).unwrap();
+      console.log(result)
       if (result.success){
       localStorage.setItem("token", result.token);
       localStorage.setItem("username", result.username);

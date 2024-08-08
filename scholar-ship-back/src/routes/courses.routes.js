@@ -11,10 +11,6 @@ import { userAuth } from "../middleware/userAuth.js";
 
 const router = new Router();
 
-// router.use((req, res, next) => {
-//   if (userAuth(req, res)) next();
-// });
-
 router.get("/", getCourses);
 router.get("/id/:id", getCourseById);
 router.get("/:search", getCoursesBySearch)

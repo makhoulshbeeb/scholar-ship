@@ -1,33 +1,29 @@
 import { User } from "../models/user.model.js";
 import JWT from "jsonwebtoken";
 
-export const userAuth = async (req, res) => {
+export const adminAuth = async (req, res, next) => {
         if (req.headers && req.headers.authorization) {
             let authorization = req.headers.authorization;
             let decoded;
             try {
                 decoded = JWT.verify(authorization, process.env.JWT_SECRET, {algorithms: [process.env.JWT_ALGO]});
             } catch (e) {
-                res.send("Token not valid");
-                return;
+                return res.send("Token not valid");
             }
             let userId = decoded.id;
             User.findOne({ _id: userId })
                 .then((user) => {
                     if (user.isAdmin){
-                        return user;
+                        return next();
                     }else{
-                        res.send("Admin Authorization Required");
-                        return;
+                        return res.send("Admin Authorization Required");
                     }
                 })
                 .catch((err) => {
-                    res.send("Token error");
-                    return;
+                    return res.send("Token error");
                 })
         } else {
-            res.send("No token found");
-            return;
+            return res.send("No token found");
         }
 }
 

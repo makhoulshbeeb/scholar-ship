@@ -26,7 +26,7 @@ export const logInUser = async (req, res) => {
         res.json({ success: false, error: "Send needed params" })
         return;
     }
-    User.findOne({ email: req.body.email }).select("password").then((user) => {
+    User.findOne({ email: req.body.email }).then((user) => {
         if (!user) {
             res.json({ success: false, error: "User does not exist" })
         } else {

@@ -18,7 +18,6 @@ const userSchema = new Schema({
     },
     password: {
         required: true,
-        select: false,
         type: String,
     },
     history:{ type:[{

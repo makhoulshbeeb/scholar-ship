@@ -2,11 +2,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const coursesApi = createApi({
     reducerPath: 'coursesApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
-    headers: {
-      'authorization' : `Bearer ${localStorage.getItem('token')}`,
+    baseQuery: fetchBaseQuery({ 
+      baseUrl: 'http://localhost:5000/' ,
+      headers: {
+      'Authorization' : `Bearer ${localStorage.getItem('token')}`,
       'Content-Type' : 'application/json'
-    },
+    }}),
     tagTypes:['Course'],
     endpoints: (builder) => ({
       getAllCourses: builder.query({

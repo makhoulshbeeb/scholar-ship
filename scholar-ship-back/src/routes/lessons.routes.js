@@ -9,10 +9,6 @@ import {
 
 const router = new Router();
 
-// router.use((req, res, next) => {
-//   if (userAuth(req, res)) next();
-// });
-
 router.get("/", getLessons);
 router.get("/:id", getLessonById);
 router.post("/", createLesson);
